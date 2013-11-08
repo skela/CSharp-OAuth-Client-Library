@@ -37,6 +37,7 @@ namespace OAuth.Authenticator
             BaseString baseString = new BaseString(request.RequestUri, request.Method,
                 nonce, timestamp, credentials, HmacSha1Signature.MethodName);
             baseString.Token = token;
+			baseString.VerifierCode = token.Verifier;
 
             return new HmacSha1Signature(baseString.ToString(), credentials, token);
         }

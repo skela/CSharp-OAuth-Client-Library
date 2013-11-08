@@ -26,11 +26,15 @@ namespace OAuth.Base
     {
         public readonly string Value;
         public readonly string Secret;
+		public readonly string SessionHandle;
+		public readonly string Verifier;
 
-        public Token(string token, string secret)
+		public Token(string token, string secret,string verifier=null,string sessionHandle=null)
         {
             Value = token;
             Secret = secret;
+			SessionHandle = sessionHandle;
+			Verifier = verifier;
         }
     }
 }

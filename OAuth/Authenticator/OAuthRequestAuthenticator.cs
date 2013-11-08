@@ -49,6 +49,7 @@ namespace OAuth.Authenticator
         {
             AuthorizationHeader header = new AuthorizationHeader(credentials, nonce, timestamp, signature);
             header.Token = token;
+			header.VerifierCode = token.Verifier;
             return header;
         }
 

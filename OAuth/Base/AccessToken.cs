@@ -24,8 +24,8 @@ namespace OAuth.Base
 {
     public class AccessToken : Token
     {
-        public AccessToken(string token, string secret) : 
-            base(token, secret)
+		public AccessToken(string token, string secret,string verifier=null,string sessionHandle=null) : 
+			base(token, secret,verifier,sessionHandle)
         {
         }
     }
