@@ -39,14 +39,23 @@ namespace OAuth.Base
             this.value = value;
         }
 
+		public static string GenarateRandomUID ()
+		{
+			Guid guid = Guid.NewGuid();
+			return guid.ToString();
+		}
+
         public static Nonce Generate()
         {
+			/*
             byte[] b = new byte[4];
             new RNGCryptoServiceProvider().GetBytes(b);
             int seed = (b[0] & 0x7f) << 24 | b[1] << 16 | b[2] << 8 | b[3];
 
             Random random = new Random(seed);
             return new Nonce(random.Next(123400, 9999999));
+            */
+			return new Nonce (GenarateRandomUID ());
         }
 
         public override bool Equals(Object obj)

@@ -26,11 +26,13 @@ namespace OAuth.Base
     {
         public readonly string Identifier;
         public readonly string Secret;
+		public readonly string Realm;
 
-        public ClientCredentials(string clientIdentifier, string clientSharedSecret)
+		public ClientCredentials(string clientIdentifier, string clientSharedSecret, string realm="")
         {
             Identifier = clientIdentifier;
             Secret = clientSharedSecret;
+			Realm = realm;
         }
     }
 }

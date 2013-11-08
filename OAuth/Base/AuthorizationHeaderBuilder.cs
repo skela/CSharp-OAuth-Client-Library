@@ -37,8 +37,10 @@ namespace OAuth.Base
 
         public AuthorizationHeaderBuilder AppendField(string name, string value)
         {
+			//string encVal = System.Web.HttpUtility.UrlEncode(value);
+
             header.Append(comma ? "," : "");
-            header.Append(name).Append("=\"").Append(value).Append("\"");
+			header.Append(name).Append("=\"").Append(value).Append("\"");
             comma = true;
             return this;
         }

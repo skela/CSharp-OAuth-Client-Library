@@ -67,11 +67,12 @@ namespace OAuth.Base
             // 5. Parameters included in the request entity-body if they comply 
             //    with restrictions defined in Section 3.4.1.3.
 
-            return String.Join("&", new string[] {
-                httpMethod.ToUpper(), 
-                GetBaseStringUri(),
-                GetParametersString()
-            });
+			String val = String.Join("&", new string[] {
+				httpMethod.ToUpper(), 
+				GetBaseStringUri(),
+				GetParametersString()
+			});
+			return val;
         }
 
         private string GetBaseStringUri()
@@ -137,7 +138,7 @@ namespace OAuth.Base
                 parameters.Add(new BaseStringParameter(AuthorizationHeaderFields.VERIFIER, verifier));
             }
 
-            if (token != null)
+			if (token != null && !String.IsNullOrEmpty(token.Value))
             {
                 parameters.Add(new BaseStringParameter(AuthorizationHeaderFields.TOKEN, token.Value));
             }

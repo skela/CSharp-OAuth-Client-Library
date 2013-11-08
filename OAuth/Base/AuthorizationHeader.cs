@@ -52,12 +52,13 @@ namespace OAuth.Base
             AuthorizationHeaderBuilder header = new AuthorizationHeaderBuilder();
 
             header.Append("OAuth ");
-            header.AppendField(AuthorizationHeaderFields.REALM);
+			if (credentials.Realm!=null && credentials.Realm.Length>0)
+				header.AppendField(AuthorizationHeaderFields.REALM,credentials.Realm);
             header.AppendField(AuthorizationHeaderFields.VERSION, OAuthVersion.VERSION);
             header.AppendField(AuthorizationHeaderFields.CONSUMER_KEY, credentials.Identifier);
             header.AppendField(AuthorizationHeaderFields.SIGNATURE_METHOD, signature.Method);
 
-            if (token != null)
+			if (token != null && !String.IsNullOrEmpty(token.Value))
             {
                 header.AppendField(AuthorizationHeaderFields.TOKEN, token.Value);
             }
@@ -76,7 +77,9 @@ namespace OAuth.Base
             header.AppendField(AuthorizationHeaderFields.TIMESTAMP, timestamp.ToString());
             header.AppendField(AuthorizationHeaderFields.SIGNATURE, signature.Value);
 
-            return header.ToString();
+			String val = header.ToString ();
+
+			return val;
         }
     }
 }
