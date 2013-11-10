@@ -33,7 +33,7 @@ namespace OAuth.Utils
         {
             string[] queryParameters = SplitQueryParameters(queryString);
 
-            foreach (string queryParameter in SplitQueryParameters(queryString))
+			foreach (string queryParameter in queryParameters)
             {
                 AddQueryParmater(queryParameter);
             }
